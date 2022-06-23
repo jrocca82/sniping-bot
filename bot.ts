@@ -30,8 +30,8 @@ const main = async () => {
         console.log(`Token1: ${token1}`)
         console.log(`Pair Address: ${pair}\n`)
 
-        // Since we are buying this new token with WETH, we want to verify token0 & token1 address, and fetch the address of the new token?
-        let path = []
+        // Since we are buying this new token with WETH, we want to verify token0 & token1 address, and fetch the address of the new token
+        let path: string[] = []
 
         if (token0 === WETH._address) {
             path = [token0, token1]
