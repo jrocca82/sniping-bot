@@ -34,9 +34,21 @@ export default {
   networks: {
     hardhat: {
       chainId: 1337,
+      forking: {
+        url: process.env.FORKED_NETWORK,
+        blockNumber: 15011476
+      },
       accounts: [
         {
           privateKey: process.env.PRIVATE_KEY,
+          balance: ethers.utils
+            .parseEther(
+              process.env.LOCAL_ETHER_BALANCE?.toString() ?? defaultEtherBalance
+            )
+            .toString()
+        },
+        {
+          privateKey: process.env.PRIVATE_KEY_2,
           balance: ethers.utils
             .parseEther(
               process.env.LOCAL_ETHER_BALANCE?.toString() ?? defaultEtherBalance

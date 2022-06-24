@@ -6,6 +6,17 @@ const configPath = path.resolve(__dirname, "../contracts.json");
 import { ethers } from "ethers";
 import { LedgerSigner } from "@ethersproject/hardware-wallets";
 
+export const createAccounts = async () => {
+  const provider = new ethers.providers.JsonRpcProvider();
+  const signer = provider.getSigner();
+
+  const accounts = await provider.listAccounts();
+  const deployer = accounts[0];
+  const sniper = accounts[1]
+
+  return {provider, signer, deployer, sniper}
+};
+
 export const getContractAddressFromNonce = async (
   signer,
   nonce
