@@ -1,6 +1,3 @@
-# solidity-template
-A template for solidity development with [hardhat](https://github.com/nomiclabs/hardhat).
-
 ## Scripts
 
 ### hh:compile
@@ -10,19 +7,16 @@ Compiles the contracts with Hardhat
 Runs the deployment script with the network set in `process.env.NETWORK`.
 
 ### hh:node
-Starts a local hardhat node with the `localhost` network.
+Starts a local hardhat node that forks mainnet for testing.
 
 ## Contracts
 Contracts are located in the `/contracts` folder.
-
-***There is an example ERC20 contract in `/contracts/Token.sol`***
 
 ## Configuration
 See `/hardhat.config.ts` for hardhat configuration. Some values are fetched from environment variables, see `dev.env` for local development environment variables and copy it into `.env` before changing the values.
 
 ## Deployment
 The deployment script is located in the `/scripts/deploy` folder. Each contract to be deployed should have its own deployment module.
-
 
 ***See `/scripts/deploy/contracts/Token.ts` for an example with an ERC20.***
 
@@ -71,3 +65,8 @@ network is localhost
 token address is 0x47A78de7a881CCa1a0f510efA2E520b447F707Bb
 balance is 1 wei for address 0xA39560b08FAF6d8Cd2aAC286479D25E0ea70f510
 ```
+
+##To run the bot:
+First, run npx hardhat node to start a forked version of mainnet
+In a second terminal, run npx hardhat run ./scripts/bot.ts to start the bot
+To test the bot, deploy the token contract and run the tasks (in order): ./scripts/tasks/create_pool.ts && ./scripts/tasks/fund.ts
